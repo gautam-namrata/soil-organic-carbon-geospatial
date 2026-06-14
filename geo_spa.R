@@ -129,7 +129,6 @@ results_diff <- data.frame(
   Percnt_change   = c(((67.24 - 75.44) / 75.44) * 100,  ((58.13 - 73.42) / 73.42) * 100))
   
   print(results_diff)
-#France loses almost twice as much SOC when going from forest to cropland.
 #France loses roughly twice as much SOC (in relative terms) when converting forest to cropland.
   
 print(results_diff)
