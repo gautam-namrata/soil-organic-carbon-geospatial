@@ -5,7 +5,7 @@
 
 ## 1. Overview
 
-This project compares Soil Organic Carbon (SOC) between forest and Cropland in Germany and France.
+This project compares Soil Organic Carbon (SOC) between forest and cropland in Germany and France.
 SOC  plays a major role in the global carbon cycle. When forests are cleared for agriculture, soil carbon built up over decades is rapidly lost. This analysis investigates the difference of the loss using globally available soil and land cover datasets. 
 
 ## Research Question
