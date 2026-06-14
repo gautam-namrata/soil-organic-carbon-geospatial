@@ -43,8 +43,7 @@ print(s_france)
 # dg/kg
 mean_fg <- data.frame(
   country=c("Germany","France"),
-  meanvalue=c(s_germany$mean,s_france$mean)
-)
+  meanvalue=c(s_germany$mean,s_france$mean))
 print(mean_fg)
 
 #FOR LAND COVER - Forest and Cropland
@@ -144,10 +143,8 @@ ggplot(results_diff,
   geom_col(width=0.5) +
   scale_fill_manual(values=c(
     "Germany" = "lightgreen",
-    "France"  = "blue")) +labs( title  = "SOC difference- Forest to Cropland", subtitle = "Source SoilGrids ", x       = "Country",
-    y = "Change in Difference ", caption = "Negative = SOC loss when converting forest to cropland"
-  ) 
-
+    "France"  = "blue")) +labs( title  = "SOC difference- Forest to Cropland", subtitle = "Source SoilGrids ", x = "Country",
+    y = "Change in Difference ", caption = "Negative = SOC loss when converting forest to cropland") 
 
 ##END##
 
