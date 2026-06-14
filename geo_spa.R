@@ -144,8 +144,8 @@ ggplot(results_diff,
   geom_col(width=0.5) +
   scale_fill_manual(values=c(
     "Germany" = "lightgreen",
-    "France"  = "blue")) +labs( title   = "SOC difference- Forest to Cropland", subtitle = "Source SoilGrids ", x       = "Country",
-    y       = "Change in Difference ", caption = "Negative = SOC loss when converting forest to cropland"
+    "France"  = "blue")) +labs( title  = "SOC difference- Forest to Cropland", subtitle = "Source SoilGrids ", x       = "Country",
+    y = "Change in Difference ", caption = "Negative = SOC loss when converting forest to cropland"
   ) 
 
 
