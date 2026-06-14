@@ -1,9 +1,7 @@
 
 #SOC from SoilGrids for Germany and France.
-## This is done to understand what are the differences in SOC values between two countries if they change forest into cropland 
-#####################################
+# This is done to understand what are the differences in SOC values between two countries if they change forest into cropland 
 rm(list=ls())
-
 library(tidyverse)
 library(terra)
 library(sf)
@@ -11,19 +9,18 @@ library(ggplot2)
 library(readxl)
 library(geodata)
 
-####Extracting the Boundary of GERMANY AND FRANCE using (G)
-
+#Extracting the Boundary of GERMANY AND FRANCE using (G)
 germany_boundary <- gadm(country="DEU",level=0, path=tempdir())
 france_boundary <- gadm(country="FRA", level=0, path=tempdir())
 print(germany_boundary)
 plot(germany_boundary,border='black',lwd=2)
 plot(france_boundary,border='black',lwd=2)
 
-### Extracting Soil Organic Carbon(SOC) from Soil Grids###
+#Extracting Soil Organic Carbon(SOC) from Soil Grids
 
 soc_world <- soil_world("soc",depth=5, path=tempdir())
 
-####SOC for Germany and France###
+####SOC for Germany and France#
 plot(soc_world)
 soc_germany <- crop(soc_world,germany_boundary)
 soc_germany<- mask(soc_germany,germany_boundary )
@@ -97,13 +94,10 @@ res(soc_france)
 res(crop_f)
 
 ##The pixel matched
-
 print(crop_g)
 print(crop_f)
 print(crop_g)
 print(crop_f)
-
-
 
 # Mask SOC to forest areas only
 # Where tree cover > 0.3 = forest
@@ -115,7 +109,6 @@ mean_forest_g <- global(forest_soc_g, "mean", na.rm=TRUE)
 print(mean_forest_g)
 
 # Cropland SOC of Germany
-
 # 1 = cropland, 0 = not cropland
 crop_soc_g  <- mask(soc_germany, crop_g, maskvalue=0)
 mean_crop_g <- global(crop_soc_g, "mean", na.rm=TRUE)
@@ -128,13 +121,11 @@ forest_soc_f  <- mask(soc_france, forest_mask_f, maskvalue=0)
 mean_forest_f <- global(forest_soc_f, "mean", na.rm=TRUE)
 print(mean_forest_f)
 
-
 # Cropland SOC — France
 crop_soc_f  <- mask(soc_france, crop_f, maskvalue=0)
 mean_crop_f <- global(crop_soc_f, "mean", na.rm=TRUE)
 
 print(mean_crop_f)
-
 
 # Add difference
 results_diff <- data.frame(
@@ -145,15 +136,11 @@ results_diff <- data.frame(
   Percnt_change   = c(((67.24 - 75.44) / 75.44) * 100,  ((58.13 - 73.42) / 73.42) * 100))
   
   print(results_diff)
-
-  #France loses ALMOST TWICE as much SOC when going from forest to cropland.
+#France loses ALMOST TWICE as much SOC when going from forest to cropland.
   
 print(results_diff)
 
-
-
 ###PLOT
-
 ggplot(results_diff,
        aes(x=Country, y=Difference, fill=Country)) +
   geom_col(width=0.5) +
