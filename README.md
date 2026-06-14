@@ -40,4 +40,4 @@ France loses nearly twice the SOC when converting forest to cropland compared to
 
 ## 5. Tools & Packages
 
-terra, sf, geodata, tidyverse, ggplot2
+terra, sf, geodata, tidyverse, ggplot2, readxl
