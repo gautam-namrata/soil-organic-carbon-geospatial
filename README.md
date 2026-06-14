@@ -12,7 +12,7 @@ This project extracts and compares Soil Organic Carbon (SOC) at 0-5 cm depth for
 ## 2. Data Sources
 
 - SOC: SoilGrids, geodata, with the use of soil_world(), 0–5 cm depth.
-- Land Cover: ESA WorldCover through geodata::landcover().
+- Land Cover: ESA WorldCover through geodata, landcover().
 - Boundaries: GADM Level 0.
 
 ---
