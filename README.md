@@ -5,15 +5,19 @@
 
 ## 1. Overview
 
-This project extracts and compares Soil Organic Carbon (SOC) at 0-5 cm depth for Germany and France using open spatial datasets, with a focus on how land cover (forest vs cropland) affects SOC storage.
+This project investigates how converting forest to cropland affects Soil Organic Carbon (SOC), and compares the difference of SOC loss between Germany and France.
+SOC  plays a major role in the global carbon cycle. When forests are cleared for agriculture, soil carbon built up over decades is rapidly lost  released into the atmosphere as CO₂. This analysis quantifies that loss using globally available soil and land cover datasets. 
+
+## Research Question
+How does forest to cropland conversion drive SOC loss differently across Germany and France?
 
 ---
 
 ## 2. Data Sources
 
-- SOC: SoilGrids, geodata, with the use of soil_world(), 0–5 cm depth.
-- Land Cover: ESA WorldCover through geodata, landcover().
-- Boundaries: GADM Level 0.
+1. SOC: SoilGrids, geodata, with the use of soil_world(), 0–5 cm depth.
+2. Land Cover: ESA WorldCover through geodata, landcover().
+3. Boundaries: GADM Level 0.
 
 ---
 
@@ -37,6 +41,12 @@ This project extracts and compares Soil Organic Carbon (SOC) at 0-5 cm depth for
 France loses nearly twice the SOC when converting forest to cropland compared to Germany.
 
 ---
+## Limitations
+
+1. Analysis uses only the 0–5 cm soil depth, SOC loss extends deeper and may be underestimated.
+2. Forest threshold of > 0.30 tree cover fraction is commonly used in remote sensing but differs from the strict FAO definition (> 0.50)
+3. No statistical significance testing was performed results are descriptive.
+
 
 ## 5. Tools & Packages
 
