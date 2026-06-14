@@ -9,7 +9,7 @@ library(readxl)
 library(geodata)
 
 # Country boundaries (GADM level 0) for Germany and France.
-# Used to spatially clip all raster layers to each country's extent.
+# Used to spatially clip all raster layers to each country's borders.
 # For Germany
 germany_boundary <- gadm(country="DEU",level=0, path=tempdir())
 plot(germany_boundary,border='black',lwd=2)
@@ -20,8 +20,6 @@ plot(france_boundary,border='black',lwd=2)
 
 # SOC data are taken from SoilGrids at 0–5 cm depth, the topmost soil layer.
 # Values are in dg/kg (decigrams of carbon per kg of soil).
-# SoilGrids maps soil properties worldwide at ~250 m resolution
-
 soc_world <- soil_world("soc",depth=5, path=tempdir())
 
 # The rasters are then clipped to Germany and France,
@@ -141,7 +139,7 @@ print(results_diff)
 
 #VISUALIZATION
 #The bar chart shows the absolute SOC difference between forest and cropland for each country.
-#Negative values confirm that cropland stores less carbon than forest in both cases but the gap is far steeper for France.
+#Negative values confirm that cropland stores less carbon than forest in both cases but the gap is far less for France.
 ggplot(results_diff,
        aes(x=Country, y= Difference, fill=Country)) +
   geom_col(width=0.5) +
