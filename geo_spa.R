@@ -1,6 +1,5 @@
 
-#Investigating SOC loss under forest to cropland conversion. 
-#A comparison of Germany and France.
+#Investigating SOC loss under forest and cropland. And comparing the loss of SOC between Germany and France.
 rm(list=ls())
 library(tidyverse)
 library(terra)
