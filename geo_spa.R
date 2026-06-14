@@ -1,5 +1,6 @@
 
-# Investigating SOC loss under forest to cropland conversion.A comparison of Germany and France.
+#Investigating SOC loss under forest to cropland conversion. 
+#A comparison of Germany and France.
 rm(list=ls())
 library(tidyverse)
 library(terra)
@@ -9,7 +10,6 @@ library(readxl)
 library(geodata)
 
 # Country boundaries (GADM level 0) for Germany and France.
-# Used to spatially clip all raster layers to each country's borders.
 # For Germany
 germany_boundary <- gadm(country="DEU",level=0, path=tempdir())
 plot(germany_boundary,border='black',lwd=2)
@@ -22,9 +22,8 @@ plot(france_boundary,border='black',lwd=2)
 # Values are in dg/kg (decigrams of carbon per kg of soil).
 soc_world <- soil_world("soc",depth=5, path=tempdir())
 
-# The rasters are then clipped to Germany and France,
+# The rasters are then cropped and masked to Germany and France,
 # so only soil pixels within each country are kept.
-
 plot(soc_world)
 soc_germany <- crop(soc_world,germany_boundary)
 soc_germany<- mask(soc_germany,germany_boundary )
@@ -92,9 +91,9 @@ print(crop_f)
 print(crop_g)
 print(crop_f)
 
-#define "forest" as pixels where tree cover fraction > 0.3
-# Mask SOC to forest areas only
-
+#defined forest as pixels where tree cover fraction > 0.3
+# Mask SOC to forest areas only.
+#Forest SOC of Germany
 forest_mask_g <- tree_g > 0.3
 forest_soc_g  <- mask(soc_germany, forest_mask_g, 
                       maskvalue=0)
@@ -107,14 +106,14 @@ crop_soc_g  <- mask(soc_germany, crop_g, maskvalue=0)
 mean_crop_g <- global(crop_soc_g, "mean", na.rm=TRUE)
 print(mean_crop_g)
 
-# Forest SOC — France
+# Forest SOC of France
 forest_mask_f <- tree_f > 0.3
 forest_soc_f  <- mask(soc_france, forest_mask_f, maskvalue=0)
 
 mean_forest_f <- global(forest_soc_f, "mean", na.rm=TRUE)
 print(mean_forest_f)
 
-# Cropland SOC — France
+# Cropland SOC of France
 crop_soc_f  <- mask(soc_france, crop_f, maskvalue=0)
 mean_crop_f <- global(crop_soc_f, "mean", na.rm=TRUE)
 print(mean_crop_f)
