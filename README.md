@@ -11,19 +11,19 @@ This project extracts and compares Soil Organic Carbon (SOC) at 0-5 cm depth for
 
 ## 2. Data Sources
 
-- SOC: SoilGrids, geodata, with the use of soil_world(), 0–5 cm depth
-- Land Cover: ESA WorldCover through geodata::landcover()
-- Boundaries: GADM Level 0
+- SOC: SoilGrids, geodata, with the use of soil_world(), 0–5 cm depth.
+- Land Cover: ESA WorldCover through geodata::landcover().
+- Boundaries: GADM Level 0.
 
 ---
 
 ## 3. Methods
 
-1. Downloaded national boundaries, SOC raster, and land cover rasters for both countries
-2. Cropped and masked all layers to each country boundary
-3. Defined forest as pixels with tree cover greater than 30%
-4. Masked SOC separately to forest and cropland areas
-5. Computed mean SOC per land use class per country
+1. Downloaded national boundaries, SOC raster, and land cover rasters for both countries.
+2. Cropped and masked all layers to each country boundary.
+3. Defined forest as pixels with tree cover greater than 30%.
+4. Masked SOC separately to forest and cropland areas.
+5. Computed mean SOC per land use class per country.
 
 ---
 
